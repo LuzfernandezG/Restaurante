@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
     "target": "es5",
     "module": "esnext",
     "baseUrl": "./",
@@ -14,6 +16,6 @@
       "dom",
       "dom.iterable",
       "scripthost"
-    ]
+    ],
   }
 }
