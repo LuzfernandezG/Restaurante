@@ -3,7 +3,7 @@
 
     <div class="template">
       <nav class="navegacion">
-        <img src="../assets/logo2.png" alt="" class="imagen_navegacion">
+        <img src="../assets/logo.png" alt="" class="imagen_navegacion">
         <router-link to="/inicio" class="navegacion__enlace">PRINCIPAL</router-link>
         <router-link to="/conocenos" class="navegacion__enlace">CONOCENOS</router-link>
         <router-link to="/login" class="navegacion__enlace">RESERVA AQUI</router-link>
@@ -58,11 +58,9 @@
 
 <style scoped>
 
-
-
 .contenedor{
 justify-content: center;
-padding: 7rem;
+padding: 5rem;
 background-image: url(/src/assets/fondo3.jpg);
 align-items: center center;
 display: flex;
@@ -119,7 +117,7 @@ p{
   left: 0;
   width: 100%;
   color: #fff; /* Color del texto */
-  background: white;
+  background: black;
   display: grid;
   justify-content: center;
   text-align: center;
@@ -141,7 +139,7 @@ p{
 }
 
 .navegacion__enlace:hover{
-    color: rgb(0, 0, 0);
+    color: white;
 }
 
 .imagen_navegacion{
@@ -150,17 +148,14 @@ p{
   
   
 }
-
 footer{
   background:#f6af21;
   color:black;
-  
   font-weight: 400;
   font-style: normal;
   padding: 1px;
   font-size: 1rem;
   text-align: center; 
-
 }
 
 

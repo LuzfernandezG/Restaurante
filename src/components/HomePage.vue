@@ -1,5 +1,5 @@
 <template>
-   <div class="contenedor">
+   <div class="contain-home">
      <h1>Bienvenido</h1>
      <button @click="cerrarSesion">Cerrar Sesión</button>
    </div>
@@ -29,9 +29,14 @@
  };
  </script>
  
- 
-     
      <style>
+     .contain-home{
+      width: 500px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 50px;
+    filter: none;
+     }
    
      </style>
      

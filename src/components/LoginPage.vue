@@ -1,4 +1,7 @@
-<template>
+<template class="template-login">
+  <div class="imagen">
+    <img src="../assets/1.jpg" class="imagen-login">
+  </div>
     <div class="formalogin">
       <h1>Iniciar Sesión</h1>
       <p>Ingresa tus Datos para acceder</p>
@@ -39,16 +42,21 @@
   </script>
   
   <style scoped>
+
+
+  .imagen-login{
+    border-radius: 20px;
+    padding-right: 1rem;
+    
+  }
  
-
-
-
  .formalogin{
     width: 500px;
     background-color: white;
     border-radius: 10px;
     padding: 50px;
     filter: none;
+    text-align: center;
    }
 
 

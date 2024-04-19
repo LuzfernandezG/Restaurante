@@ -1,5 +1,8 @@
-<template>
- <div class="formaregistro">
+<template class="template-registro">
+<div class="imagen">
+    <img src="../assets/2.jpg" class="imagen-registro">
+  </div>
+<div class="formaregistro">
             <h1>Crear Cuenta</h1>
             <p>registrate para poder acceder a la plataforma</p>
             <form id="register-form">
@@ -53,14 +56,24 @@ onMounted(() => {
 </script>
 
    <style>
+   
 
+   .imagen-registro{
+    width: 22rem;
+   }
+.imagen-registro{
+    border-radius: 20px;
+    padding-right: 1rem;
+    
+  }
 
-
-   .formaregistro{
-    width: 500px;
+.formaregistro{
+    width: 22rem;
     background-color: white;
     border-radius: 10px;
     padding: 50px;
+    filter: none;
+    text-align: center;
    }
 
 
@@ -69,6 +82,7 @@ form{
     flex-direction: column;
     gap: 10px;
 }
+
 form+p form p{
     text-align: center;
 }
