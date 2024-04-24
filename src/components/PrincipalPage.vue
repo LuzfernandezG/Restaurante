@@ -1,24 +1,29 @@
 
+
 <template>
-
-    <div class="template">
-      <nav class="navegacion">
-        <img src="../assets/logo.png" alt="" class="imagen_navegacion">
-        <router-link to="/inicio" class="navegacion__enlace">PRINCIPAL</router-link>
-        <router-link to="/conocenos" class="navegacion__enlace">CONOCENOS</router-link>
-        <router-link to="/login" class="navegacion__enlace">RESERVA AQUI</router-link>
-      </nav>
-  
-
-      <div class="contenedor">
-        <router-view></router-view>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+  <div class="template">
+    <nav v-if="route.path !== '/home'" class="navegacion">
+      <img src="../assets/logo2.jpg" alt="" class="imagen_navegacion">
+      <div class="links">
+        <router-link to="/inicio" class="navegacion__enlace">Principal</router-link>
+        <router-link to="/conocenos" class="navegacion__enlace">Mas informacion</router-link>
+        <router-link to="/login" class="navegacion__enlace">Iniciar Sesión</router-link>
       </div>
-  
-      <footer>
-        <p class="footer__texto">Realizado por Luz Angela Fernandez y Jesus Soto.</p>
-      </footer>
+    </nav>
+
+    <div class="contenedor">
+      <router-view></router-view>
     </div>
-  </template>
+
+    <footer v-if="route.path !== '/home'">
+      <p class="footer__texto">Realizado por Luz Angela Fernandez y Jesus Soto.</p>
+    </footer>
+  </div>
+</template>
+ 
   
   <script setup>
   import { useRoute } from 'vue-router';
@@ -44,6 +49,9 @@
         case '/inicio':
         datos.value = 'inicio';
         break;
+        case '/home':
+        datos.value = 'home';
+        break;
 
     }
   }
@@ -58,14 +66,19 @@
 
 <style scoped>
 
+
 .contenedor{
 justify-content: center;
-padding: 5rem;
+
 background-image: url(/src/assets/fondo3.jpg);
 align-items: center center;
 display: flex;
 width: 100%;
+height: 100%;
 margin: 0 auto;
+font-family: "Figtree", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
 
   
 }
@@ -102,7 +115,6 @@ p{
   background-repeat: no-repeat;
    background-size: 100%;
    background-attachment: fixed;
-   padding-top: 6rem;
  
 
 
@@ -111,30 +123,28 @@ p{
     box-sizing: inherit;
  }
 
-.navegacion{
-   position: fixed;
+ .navegacion {
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  color: #fff; /* Color del texto */
+  color: #fff;
   background: black;
-  display: grid;
-  justify-content: center;
-  text-align: center;
-  line-height: 0.8rem;
-  padding: 1rem  ; 
+  display: flex;
+  align-items: center; /* Alinear verticalmente al centro */
+  padding: 2.2rem;
 }
-@media (min-width:768px){
-    .navegacion{
-    display: flex;
-    padding: 2rem 3rem ;
-    gap: 4rem;
-    line-height: 2rem;
-    }
+
+
+
+.links {
+  margin-left: auto;
+  padding-right: 2rem; /* Empujar los enlaces hacia la derecha */
 }
 
 .navegacion__enlace{
     color:#f6af21;
+    padding-right: 2rem;
     
 }
 
@@ -143,8 +153,9 @@ p{
 }
 
 .imagen_navegacion{
-  width: 20rem;
-  height: 4rem;
+  width: 21rem;
+  height: 3rem;
+  
   
   
 }

@@ -15,7 +15,8 @@
       
       <style>
       .contain-conocenos{
-        width: 500px;
+    margin-top: 8rem;
+    width: 500px;
     background-color: white;
     border-radius: 10px;
     padding: 50px;

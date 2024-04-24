@@ -1,4 +1,5 @@
 <template class="template-registro">
+  <div class="contain-registro">
 <div class="imagen">
     <img src="../assets/2.jpg" class="imagen-registro">
   </div>
@@ -18,6 +19,7 @@
             </form>
             <p>¿Ya tienes una cuenta? - <a href="/login">Inciar Sesion</a></p>
         </div>
+      </div>
     
   </template>
   
@@ -56,6 +58,11 @@ onMounted(() => {
 </script>
 
    <style>
+   .contain-registro{
+    display: flex;
+    margin-top: 11rem;
+    margin-bottom: 4rem;
+   }
    
 
    .imagen-registro{
@@ -68,7 +75,7 @@ onMounted(() => {
   }
 
 .formaregistro{
-    width: 22rem;
+    width: 30rem;
     background-color: white;
     border-radius: 10px;
     padding: 50px;

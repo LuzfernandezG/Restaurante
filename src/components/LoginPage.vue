@@ -1,4 +1,5 @@
 <template class="template-login">
+  <div class="contain-login">
   <div class="imagen">
     <img src="../assets/1.jpg" class="imagen-login">
   </div>
@@ -15,6 +16,7 @@
       </form>
       <p>¿Aun no estás registrado? - <router-link to="/registro">Registrarse</router-link></p>
     </div>
+  </div>
   </template>
   
   <script setup>
@@ -43,6 +45,11 @@
   
   <style scoped>
 
+.contain-login{
+  display: flex;
+  margin-top: 11rem;
+  margin-bottom: 4rem;
+}
 
   .imagen-login{
     border-radius: 20px;
@@ -51,7 +58,7 @@
   }
  
  .formalogin{
-    width: 500px;
+    width: 30rem;
     background-color: white;
     border-radius: 10px;
     padding: 50px;
