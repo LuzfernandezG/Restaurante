@@ -11,6 +11,7 @@
         <router-link to="/inicio" class="navegacion__enlace">Principal</router-link>
         <router-link to="/conocenos" class="navegacion__enlace">Mas informacion</router-link>
         <router-link to="/login" class="navegacion__enlace">Iniciar Sesión</router-link>
+        <router-link to="/registro" class="navegacion__enlace">Registrarse</router-link>
       </div>
     </nav>
 
