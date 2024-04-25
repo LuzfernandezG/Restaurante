@@ -1,8 +1,8 @@
-<template class="template-login">
+<template>
   <div class="contain-login">
-  <div class="imagen">
-    <img src="../assets/1.jpg" class="imagen-login">
-  </div>
+    <div class="imagen">
+      <img src="../assets/1.jpg" class="imagen-login">
+    </div>
     <div class="formalogin">
       <h1>Iniciar Sesión</h1>
       <p>Ingresa tus Datos para acceder</p>
@@ -17,32 +17,40 @@
       <p>¿Aun no estás registrado? - <router-link to="/registro">Registrarse</router-link></p>
     </div>
   </div>
-  </template>
-  
-  <script setup>
-  import axios from '../axios';
-  import { ref } from 'vue';
-  import { useRouter } from 'vue-router';
-  
-  const user = ref('');
-  const password = ref('');
-  const error = ref('');
-  const router = useRouter();
-  
-  async function login() {
-    try {
-      const response = await axios.post('/login', { user: user.value, password: password.value });
-      console.log(response.data);
-      const token = response.data.token; // Extraer el token de la respuesta del servidor
-      localStorage.setItem('token', token); // Almacenar el token en el almacenamiento local
+</template>
+
+<script setup>
+import axios from '../axios';
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+
+const user = ref('');
+const password = ref('');
+const error = ref('');
+const router = useRouter();
+
+async function login() {
+  try {
+    const response = await axios.post('/login', { user: user.value, password: password.value });
+    console.log(response.data);
+    const token = response.data.token; // Extraer el token de la respuesta del servidor
+    localStorage.setItem('token', token); // Almacenar el token en el almacenamiento local
+
+    // Verificar el campo redirect
+    if (response.data.redirect === '/admin') {
+      // Redirigir al admin
+      router.push('/admin');
+    } else {
+      // Redirigir al home
       router.push('/home');
-    } catch (error) {
-      console.error('Error durante el inicio de sesión:', error);
-      error.value = 'Error al iniciar sesión. Por favor, inténtalo de nuevo.';
     }
+  } catch (error) {
+    console.error('Error durante el inicio de sesión:', error);
+    error.value = 'Error al iniciar sesión. Por favor, inténtalo de nuevo.';
   }
-  </script>
-  
+}
+</script>
+
   <style scoped>
 
 .contain-login{
