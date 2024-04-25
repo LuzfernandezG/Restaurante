@@ -18,7 +18,8 @@
       <router-view></router-view>
     </div>
 
-    <footer v-if="route.path !== '/home'">
+    <footer v-if="route.path !== '/home'"  >
+ 
       <p class="footer__texto">Realizado por Luz Angela Fernandez y Jesus Soto.</p>
     </footer>
   </div>
@@ -51,6 +52,9 @@
         break;
         case '/home':
         datos.value = 'home';
+        break;
+        case '/admin':
+        datos.value = 'admin';
         break;
 
     }
@@ -160,6 +164,7 @@ p{
   
 }
 footer{
+
   background:#f6af21;
   color:black;
   font-weight: 400;
@@ -168,6 +173,7 @@ footer{
   font-size: 1rem;
   text-align: center; 
 }
+
 
 
 </style>

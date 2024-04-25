@@ -6,6 +6,7 @@
         <router-link to="/inicio" class="navegacion__enlace">Informacion</router-link>
         <button class="boton" @click="cerrarSesion">Cerrar Sesión</button>
       </nav>
+      
    <div class="contain-home">
     <h1 class="titulo">MESAS</h1>
     <p class="descripcion">Escoge la mesa de tu preferencia </p>

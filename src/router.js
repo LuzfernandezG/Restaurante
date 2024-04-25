@@ -5,6 +5,7 @@ import Login from './components/LoginPage.vue';
 import Home from './components/HomePage.vue';
 import Conocenos from './components/ConocenosPage.vue';
 import Inicio from './components/InicioPage.vue';
+import Admin from './components/AdminPage.vue';
 
 
 
@@ -14,7 +15,8 @@ const routes = [
   { path: '/login',name:"login", component:Login },
   { path: '/home',name:"home", component:Home },
   { path: '/conocenos',name:"conocenos", component:Conocenos },
-  { path: '/inicio',name:"incio", component:Inicio }
+  { path: '/inicio',name:"incio", component:Inicio },
+  { path: '/admin',name:"admin", component:Admin }
 ];
 
 const router = createRouter({
