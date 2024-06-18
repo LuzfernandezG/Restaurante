@@ -7,8 +7,10 @@
       <h1>Iniciar Sesión</h1>
       <p>Ingresa tus Datos para acceder</p>
       <form @submit.prevent="login">
+        <p class="textos">Usuario*</p>
         <label for="user" class="sr-only">Usuario</label>
         <input type="text" v-model="user" id="user" placeholder="Nombre de Usuario">
+        <p class="textos">Contraseña*</p>
         <label for="password" class="sr-only">Contraseña</label>
         <input type="password" v-model="password" id="password" placeholder="Contraseña">
         <button type="submit">Iniciar Sesión</button>
@@ -36,22 +38,26 @@ async function login() {
     const token = response.data.token; // Extraer el token de la respuesta del servidor
     localStorage.setItem('token', token); // Almacenar el token en el almacenamiento local
 
-    // Verificar el campo redirect
+  
     if (response.data.redirect === '/admin') {
       // Redirigir al admin
-      router.push('/admin');
+      router.push('/admin/lista');
+      alert("Bienvenido Admin");
     } else {
       // Redirigir al home
-      router.push('/home');
+      router.push('/home/lista2');
+      alert("Bienvenido Cliente");
     }
   } catch (error) {
     console.error('Error durante el inicio de sesión:', error);
+    alert("Ingresaste mal las credenciales");
     error.value = 'Error al iniciar sesión. Por favor, inténtalo de nuevo.';
   }
 }
 </script>
 
   <style scoped>
+
 
 .contain-login{
   display: flex;
@@ -62,6 +68,8 @@ async function login() {
   .imagen-login{
     border-radius: 20px;
     padding-right: 1rem;
+    width: 23rem;
+   
     
   }
  
@@ -85,10 +93,11 @@ form+p form p{
 }
 
 input,button{
-    border-radius: 4px;
+    border-radius: 20px;
     border: unset;
     padding: 15px 30px;
     font-size: larger;
+    background-color: rgb(221, 220, 220);
 }
 button{
     background-color: #f6af21;
@@ -114,7 +123,10 @@ button:hover{
 .escondido{
     display: none;
 }
-
+.textos{
+  text-align: left;
+ 
+}
 
 
   </style>

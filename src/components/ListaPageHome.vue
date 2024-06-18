@@ -1,6 +1,7 @@
 <template>
   <div>
     <img src="../assets/12.png" class="imagen-home">
+    <p class="descripcion-home">Ingresa la fecha para la que deseas la Reservacion con el formato mes/dia/año y a continuacion te mostraremos el listado de las mesas disponibles</p>
 
     <form @submit.prevent="buscarMesas">
       <input type="date" v-model="fecha" required>
@@ -18,10 +19,17 @@
           <p>Descripción: {{ mesa.descripcion }}</p>
           <button class="boton" @click="mostrarFormularioReserva(mesa)">RESERVAR</button>
           <form v-if="mostrarFormulario && mesa === mesaSeleccionada" @submit.prevent="reservarMesa(mesa.numero)">
-            <label for="nombreReserva">Nombre de quien reserva:</label>
+            <label for="nombreReserva">Nombre completo de quien reserva:</label>
             <input type="text" id="nombreReserva" v-model="nombreReserva" required>
+            <label for="cedulaReserva">Ingresar cédula:</label>
+            <input type="number" id="cedulaReserva" v-model="cedulaReserva" required>
             <label for="motivoReserva">Motivo de la reserva:</label>
             <textarea id="motivoReserva" v-model="motivoReserva" required></textarea>
+            <label for="modalidad">Modo de Pago:</label>
+            <select id="modalidad" v-model="modalidad" required>
+              <option value="efectivo">Efectivo</option>
+              <option value="tarjeta">Tarjeta</option>
+            </select>
             <button type="submit">Reservar Ahora</button>
           </form>
         </div>
@@ -34,15 +42,16 @@
 import axios from '@/axios';
 import { ref } from 'vue';
 
-// Declaramos las variables como ref para poder reactivamente
 const mesas = ref([]);
 const fecha = ref('');
 const mostrarFormulario = ref(false);
 const mesaSeleccionada = ref(null);
 
-// Definimos las variables nombreReserva y motivoReserva
+
 const nombreReserva = ref('');
+const cedulaReserva = ref('');
 const motivoReserva = ref('');
+const modalidad = ref('');
 
 // Función para obtener las mesas disponibles
 const obtenerMesas = async () => {
@@ -68,25 +77,28 @@ const mostrarFormularioReserva = (mesa) => {
 // Función para reservar una mesa
 const reservarMesa = async (numeroMesa) => {
   try {
-    // Enviamos una solicitud POST al endpoint '/api/reservar-mesa' con los datos necesarios
     await axios.post('/reservar-mesa', { 
       nombreReservante: nombreReserva.value,
+      cedula: cedulaReserva.value,
       fecha: fecha.value, 
       numeroMesa,
-      motivo: motivoReserva.value
+      motivo: motivoReserva.value,
+      modalidad: modalidad.value
     });
     console.log('Mesa reservada con éxito');
-    // Actualizar la lista de mesas después de reservar
+    alert("Mesa reservada con éxito");
     obtenerMesas();
-    // Ocultar el formulario después de reservar
     mostrarFormulario.value = false;
   } catch (error) {
     console.error('Error al reservar la mesa:', error);
   }
 }
 </script>
-
 <style>
+.descripcion-home {
+  text-align: center;
+}
+
 .contain-mesas {
   width: 90%;
   display: grid;
@@ -128,5 +140,14 @@ const reservarMesa = async (numeroMesa) => {
   padding-bottom: 1rem;
   width: 95%;
 }
-</style>
 
+.boton {
+  cursor: pointer;
+}
+
+select {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+}
+</style>

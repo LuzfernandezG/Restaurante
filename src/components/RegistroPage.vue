@@ -7,10 +7,13 @@
             <h1>Crear Cuenta</h1>
             <p>registrate para poder acceder a la plataforma</p>
             <form id="register-form">
+              <p class="textos">Usuario*</p>
                 <label for="user" class="sr-only">User</label>
                 <input type="text" name="user" id="user" placeholder="Nombre de Usuario">
+                <p class="textos">Correo*</p>
                 <label for="email" class="sr-only">Email</label>
                 <input type="email" name="email" id="email" placeholder="Corre Electronico">
+                <p class="textos">Contraseña*</p>
                 <label for="password" class="sr-only">Password</label>
                 <input type="password" name="password" id="password" placeholder="Contraseña">
                 <button type="submit">Registrarse</button>
@@ -29,11 +32,11 @@ import { onMounted } from 'vue';
 
 onMounted(() => {
   const registerForm = document.getElementById('register-form');
-  console.log('Register form:', registerForm); // Verificar si registerForm es null o no
+  console.log('Register form:', registerForm);
 
   if (registerForm) {
     registerForm.addEventListener('submit', async (e) => {
-      e.preventDefault();//elminar que se recargue por defecto
+      e.preventDefault();
     
       const user = e.target.elements.user.value;
       const email = e.target.elements.email.value;
@@ -44,10 +47,11 @@ onMounted(() => {
         console.log(response.data);
         window.location.href = '/login';
         
-        // Manejar la respuesta del servidor, por ejemplo, redirigir al usuario a otra página
+      
       } catch (error) {
         console.error('Error durante el registro:', error);
-        // Mostrar mensaje de error al usuario
+
+        alert("Error durante el registro:Intente nuevamente");
         document.getElementById('mensaje-error').innerText = 'Error durante el registro. Por favor, inténtelo de nuevo.';
       }
     });
@@ -57,7 +61,12 @@ onMounted(() => {
 });
 </script>
 
+
    <style>
+   .textos{
+  text-align: left;
+ 
+}
    .contain-registro{
     display: flex;
     margin-top: 11rem;
@@ -66,7 +75,7 @@ onMounted(() => {
    
 
    .imagen-registro{
-    width: 22rem;
+    width: 30rem;
    }
 .imagen-registro{
     border-radius: 20px;
@@ -95,8 +104,9 @@ form+p form p{
 }
 
 input,button{
-    border-radius: 4px;
+    border-radius: 20px;
     border: unset;
+    background-color: rgb(221, 220, 220);
     padding: 15px 30px;
     font-size: larger;
 }
@@ -105,6 +115,7 @@ button{
     color: white;
     font-weight: bold;
     cursor: pointer;
+
 }
 button:hover{
     background-color: black;
